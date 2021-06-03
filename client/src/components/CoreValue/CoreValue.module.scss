@@ -1,0 +1,14 @@
+@import "../../styles/variables";
+.container {
+  h2 {
+    font-weight: 400;
+  }
+}
+.first-word {
+  text-transform: lowercase;
+  color: rgba($primaryFontColor, 1);
+}
+
+.second-word {
+  text-transform: uppercase;
+}

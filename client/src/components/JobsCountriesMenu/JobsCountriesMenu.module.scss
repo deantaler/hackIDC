@@ -1,0 +1,20 @@
+@import "../../styles/variables";
+li.country {
+  color: rgba($primaryColor, 1);
+  background-color: rgba($primaryColor, 0);
+  margin-bottom: 5px;
+  div {
+    border-bottom: 3px solid rgba($secondaryColor, 0);
+    padding-left: 1vw;
+    &:hover {
+      border-bottom: 3px solid rgba($secondaryColor, 1);
+      transition: all 0.4s linear;
+      color: rgba($secondaryColor, 1);
+    }
+    &.active {
+      border-bottom: 3px solid rgba($secondaryColor, 1);
+      color: rgba($secondaryColor, 1);
+      background-color: rgba($primaryColor, 1);
+    }
+  }
+}

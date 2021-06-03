@@ -1,0 +1,29 @@
+.jobs-section {
+  display: grid;
+  grid-template:
+    "filters" auto
+    "jobs" auto /
+    1fr;
+}
+.countries-menu {
+  grid-area: filters;
+}
+.cards-list {
+  grid-area: jobs;
+}
+
+@media only screen and (min-width: 768px) {
+  .jobs-section {
+    display: grid;
+    grid-template:
+      "filters jobs" 1fr /
+      200px 1fr;
+    min-height: 50vh;
+  }
+  .countries-menu {
+    margin-right: 2vw;
+    font: {
+      size: 90%;
+    }
+  }
+}

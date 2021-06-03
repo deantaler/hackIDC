@@ -1,0 +1,193 @@
+@import "../../styles/variables";
+/* 
+Dynamic font size based on: https://css-tricks.com/viewport-sized-typography/
+please note the Bug mentioned there, there's a need to enable repaint for some browsers!
+*/
+
+.card {
+  display: grid;
+  grid-template:
+    "logo description" 1fr /
+    35% 65%;
+  width: 100%;
+  font-size: small;
+  padding: 2vh;
+  line-height: 1rem;
+  * {
+    align-self: center;
+  }
+}
+.logo {
+  grid-area: logo;
+  // width: #{(100/3)}vh;
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+.description {
+  grid-area: description;
+  padding: 2vh;
+  padding-right: 0;
+  z-index: -5;
+}
+.content {
+  line-height: 1;
+  h1 {
+    text-transform: uppercase;
+    font: {
+      size: 200%;
+      weight: 500;
+    }
+  }
+  p {
+    font: {
+      weight: 300;
+      family: $secondaryFont;
+      size: 150%;
+    }
+  }
+}
+
+.play-game-button {
+  color: rgba($secondaryColor, 1);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 2% 0;
+  a {
+    width: 80vw;
+    max-width: 200px;
+    text-align: center;
+    position: relative;
+    text-transform: capitalize;
+    padding: 3%;
+    color: rgba($primaryFontColor, 1);
+    font-weight: 500;
+    border-radius: 15px;
+    // border-top-right-radius: 15px;
+    // border-bottom-right-radius: 15px;
+    font-size: 1.15rem;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .card {
+    grid-template:
+      "logo" minmax(50%, 65%)
+      "description" 1fr /
+      1fr;
+    margin: 2vh 0;
+  }
+  .logo {
+    display: flex;
+    justify-content: center;
+  }
+  .game-icon {
+    min-width: 20vh;
+  }
+  .description {
+    padding: 0;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .description {
+    background-color: transparent !important;
+  }
+}
+
+@media only screen and (min-width: 767px) {
+  .card {
+    display: block;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    min-width: 100px;
+    min-height: 100px;
+    max-width: 23vw;
+    max-height: 23vw;
+    margin: 2% 1%;
+    padding: 0;
+    color: #eee;
+
+    &:hover {
+      .logo {
+        width: 50%;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .description-container {
+        /* the container is for making sure that hovering below the card 
+        won't start the animation and won't affect the page layout*/
+
+        overflow: visible;
+      }
+      .description {
+        bottom: 0;
+        opacity: 1;
+      }
+    }
+  }
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: auto;
+    transition: all 0.35s ease-in-out;
+    z-index: 1;
+  }
+  .description-container {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
+  .description {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    bottom: -100%;
+    padding: 0;
+    opacity: 0;
+    border-radius: 20%;
+    position: absolute;
+    transition: all 0.35s ease-in-out;
+    font-size: 100%;
+    overflow: hidden;
+  }
+  .content {
+    padding: 2%;
+    h1 {
+      font-size: 1.5em;
+      margin: 4vh 0 0 0;
+    }
+    p {
+      font-size: 1.3em;
+      margin: 0 !important;
+    }
+  }
+  .divider {
+    display: flex;
+    height: 2px;
+    overflow: hidden;
+    margin: 0.5vh 0;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .line {
+    display: inline-block;
+    width: 50%;
+    border-top: 1px dotted #eee;
+  }
+  .play-game-button {
+    display: none;
+  }
+}

@@ -1,0 +1,120 @@
+@import "../../styles/variables";
+@import "../../styles/sass/mixins.scss";
+
+.fly-left {
+  @include animation(flyInLeft, 3s);
+}
+
+@-webkit-keyframes flyInLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@include keyframes(flyInLeft) {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.fly-right {
+  @include animation(flyInRight, 3s);
+}
+
+@include keyframes(flyInRight) {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.section {
+  overflow: visible;
+  position: relative;
+}
+
+.inner-shadow {
+  /* $primaryColor */
+  box-shadow: inset 0 -1em 15px -10px rgba($primaryColor, 1);
+}
+
+.read-more {
+  position: absolute;
+  @include justify-content(center);
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  height: 5vh;
+  bottom: 0;
+  left: 50%;
+  @include transform(translate(-50%, 0));
+  /* box-shadow: inset 0 -1em 15px -10px rgba(#000, 0.8);
+   border-top: 1px rgba($primaryColor, 0.2) solid;
+*/
+  border-bottom: 0;
+  display: -ms-flexbox;
+  display: flex;
+  /* $primaryColor */
+  color: rgba($primaryColor, 1);
+  /* $primaryFontColor */
+  background-color: rgba($primaryFontColor, 0.8);
+  cursor: pointer;
+  font: {
+    weight: 700;
+  }
+  &:hover {
+    /* $primaryFontColor */
+    color: rgba($primaryFontColor, 1);
+    /* $primaryColor */
+    background-color: rgba($primaryColor, 1);
+  }
+  transition: all 0.35s linear;
+  /* $primaryFontColor */
+  /* box-shadow: inset 0 -1em 15px -10px rgba($primaryFontColor, 0.3); */
+}
+
+.mobile-max-height {
+  max-height: 15vh;
+}
+
+.expand-section {
+  @include animation(yourAnimation, 3s, ease, 0s);
+}
+
+/* Copy this @keyframes block to your CSS*/
+@-webkit-keyframes yourAnimation {
+  0% {
+    max-height: 15vh;
+  }
+  99% {
+    max-height: 100vh;
+  }
+  100% {
+    max-height: none;
+  }
+}
+@keyframes yourAnimation {
+  0% {
+    max-height: 15vh;
+  }
+  99% {
+    max-height: 100vh;
+  }
+  100% {
+    max-height: none;
+  }
+}

@@ -1,0 +1,48 @@
+@import "../../styles/variables";
+.container {
+  display: grid;
+  grid-template:
+    "image" auto
+    "content" 1fr /
+    1fr;
+  width: 100%;
+  margin: 2vh 0;
+}
+
+.animation {
+  grid-area: image;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .rule-icon {
+    width: 100px;
+    height: 100px;
+  }
+}
+.content {
+  grid-area: content;
+  width: 100%;
+  padding: 4%;
+  text-align: center;
+  h2 {
+    // text-transform: uppercase;
+    font: {
+      family: $primaryFont;
+      weight: 700;
+      size: 1.5rem;
+    }
+    margin: 2vh 0;
+  }
+  p {
+    font: {
+      weight: 200;
+      family: $secondaryFont;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: calc(95% / 3);
+  }
+}
