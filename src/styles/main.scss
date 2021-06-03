@@ -1,10 +1,12 @@
 @import "./css/typography.css";
 // SCSS
-@import "~react-image-gallery/styles/scss/image-gallery.scss";
 
 @import "./variables";
 :root {
   font-family: $primaryFont;
+  a:visited {
+    color: $primaryFontColor; /* Visited link    */
+  }
 }
 
 @import "normalize";
@@ -16,3 +18,7 @@
 // @media only screen and (min-width: 1024px) {
 //   @import "large";
 // }
+
+li {
+  list-style: none;
+}

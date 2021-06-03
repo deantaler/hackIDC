@@ -1,5 +1,5 @@
 @import "../../styles/variables";
-.header-bar {
+.headerBar {
   display: grid;
   grid-template:
     "burger logo socials" 1fr /
@@ -23,28 +23,8 @@
   }
 }
 
-.social-links-group {
-  grid-area: socials;
-  display: none;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-}
-.social-link {
-  margin: 0 1vw;
-  width: 3%;
-  padding: 2px;
-  min-width: 25px;
-  svg {
-    fill: rgba($primaryFontColor, 1);
-  }
-  svg:hover {
-    fill: rgba($secondaryColor, 1);
-  }
-}
-
 @media only screen and (min-width: 860px) {
-  .header-bar {
+  .headerBar {
     grid-template:
       "logo nav socials" 1fr /
       1fr 2fr auto;
@@ -54,11 +34,7 @@
     justify-content: center;
   }
 
-  .nav-bar {
+  .navBar {
     grid-area: nav;
-  }
-  .social-links-group {
-    display: flex;
-    padding-right: 10px;
   }
 }

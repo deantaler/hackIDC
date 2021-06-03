@@ -32,26 +32,8 @@
     }
   }
 }
-.social-links-group {
-  display: flex;
-  position: absolute;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  bottom: 10vh;
-}
-.social-link {
-  margin: 0 1vw;
-  padding: 2px;
-  min-width: 35px;
-  svg {
-    fill: rgba($primaryFontColor, 1);
-  }
-  svg:hover {
-    fill: rgba($secondaryColor, 1);
-  }
-}
-.close-mobile-menu-icon {
+
+.closeMobileMenuIcon {
   cursor: pointer;
   &:hover {
     span {
@@ -114,7 +96,7 @@
 }
 
 @media only screen and (min-width: 860px) {
-  .mobile-nav-bar {
+  .mobileNavBar {
     display: none;
   }
 }
