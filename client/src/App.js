@@ -6,7 +6,7 @@ import "./App.css";
 function App() {
   return (
     <Layout>
-      <Head title={title}></Head>
+      <Head title={"HackIDC"}></Head>
     </Layout>
   );
 }

@@ -1,30 +1,16 @@
-import React from "react"
-import { Link } from "gatsby"
-import MobileNavbarStyles from "./MobileNavbar.module.scss"
-import BurgerIcon from "../BurgerIcon/BurgerIcon"
-import SocialLinks from "../SocialLinks/SocialLinks"
-const MobileNavbar = props => {
-  const { navItems, toggleMenuLocation, isMenuOpen, socialLinks } = props
+import React from "react";
+import MobileNavbarStyles from "./MobileNavbar.module.scss";
+import BurgerIcon from "../BurgerIcon/BurgerIcon";
+const MobileNavbar = (props) => {
+  const { navItems, toggleMenuLocation, isMenuOpen } = props;
 
-  const menuItemLink = (name, path, type) => {
-    if (type === "internal") {
-      return (
-        <Link
-          className={MobileNavbarStyles.link}
-          activeClassName={MobileNavbarStyles.active}
-          to={path}
-        >
-          {name}
-        </Link>
-      )
-    } else {
-      return (
-        <a href={path} className={MobileNavbarStyles.link}>
-          {name}
-        </a>
-      )
-    }
-  }
+  const menuItemLink = (name, path) => {
+    return (
+      <a href={path} className={MobileNavbarStyles.link}>
+        {name}
+      </a>
+    );
+  };
   return (
     <div className={MobileNavbarStyles.mobileNavBar}>
       <BurgerIcon onClickHandler={toggleMenuLocation} />
@@ -45,22 +31,17 @@ const MobileNavbar = props => {
         <nav>
           <ul>
             {navItems.map((item, ind) => {
-              const { name, path, type } = item
+              const { name, path } = item;
               return (
                 <li key={`mobile-nav-item-${ind}`}>
-                  {menuItemLink(name, path, type)}
+                  {menuItemLink(name, path)}
                 </li>
-              )
+              );
             })}
           </ul>
         </nav>
-        <SocialLinks
-          socialLinks={socialLinks}
-          groupClass={MobileNavbarStyles.socialLinksGroup}
-          linkClass={MobileNavbarStyles.socialLink}
-        />
       </div>
     </div>
-  )
-}
-export default MobileNavbar
+  );
+};
+export default MobileNavbar;
