@@ -1,0 +1,52 @@
+import React, { useState } from "react";
+import Spinner from "./Spinner/Spinner";
+import ImageGallery from "./ImageGallery/ImageGallery";
+import UploadButton from "./UploadButton/UploadButton";
+// import { API_URL } from "./config";
+let API_URL = "/";
+
+const ImageUploadForm = () => {
+  const [isUploading, setIsUploading] = useState(false);
+  const [images, setImages] = useState([]);
+
+  const onChange = (e) => {
+    const files = Array.from(e.target.files);
+    setIsUploading(true);
+
+    const formData = new FormData();
+
+    files.forEach((file, i) => {
+      formData.append(i, file);
+    });
+
+    fetch(`${API_URL}/image-upload`, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((images) => {
+        setIsUploading(false);
+        setImages(images);
+      });
+  };
+
+  const removeImage = (id) => {
+    setImages(images.filter((image) => image.public_id !== id));
+  };
+
+  const content = isUploading ? (
+    <Spinner />
+  ) : images.length > 0 ? (
+    <ImageGallery images={images} removeImage={this.removeImage} />
+  ) : (
+    <UploadButton onChange={this.onChange} />
+  );
+
+  return (
+    <div>
+      <div className="buttons">{content}</div>
+    </div>
+  );
+};
+
+export default ImageUploadForm;
