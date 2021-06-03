@@ -1,0 +1,24 @@
+.container {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid-template:
+    "header" minmax(4rem, 6rem)
+    "body" minmax(90vh, auto)
+    "footer" minmax(4rem, auto) /
+    1fr;
+}
+
+.header {
+  grid-area: header;
+}
+
+.body {
+  grid-area: body;
+}
+
+.footer {
+  grid-area: footer;
+}

@@ -1,0 +1,72 @@
+@import "../../styles/variables";
+.container {
+  display: grid;
+  grid-template:
+    "img" auto
+    "description" 1fr /
+    1fr;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 15px;
+  min-height: 450px;
+  padding: 4%;
+}
+
+.animation {
+  grid-area: img;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rule-icon {
+  width: 85px;
+  height: 85px;
+}
+.content {
+  grid-area: description;
+  width: 100%;
+  padding-top: 2%;
+  text-align: center;
+  h2 {
+    // text-transform: uppercase;
+    font: {
+      family: $primaryFont;
+      weight: 700;
+      size: 100%;
+    }
+    margin-top: 0;
+    margin-bottom: 2vh;
+  }
+  p {
+    text-align: left;
+    font: {
+      weight: 200;
+      family: $secondaryFont;
+      size: 90%;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    grid-template:
+      "img description" 1fr /
+      auto 1fr;
+    max-width: 100%;
+    height: auto;
+  }
+  .animation {
+    padding: 0 1vw;
+  }
+  .content {
+    padding: 6% 4%;
+  }
+}
+
+@for $i from 1 through 3 {
+  @media only screen and (min-width: "#{360+$i*50}px") {
+    .container {
+      min-height: 450px - 450px * $i/13px;
+    }
+  }
+}

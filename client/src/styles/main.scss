@@ -1,0 +1,18 @@
+@import "./css/typography.css";
+// SCSS
+@import "~react-image-gallery/styles/scss/image-gallery.scss";
+
+@import "./variables";
+:root {
+  font-family: $primaryFont;
+}
+
+@import "normalize";
+
+// @import "small";
+// @media only screen and (min-width: 768px) {
+//   @import "medium";
+// }
+// @media only screen and (min-width: 1024px) {
+//   @import "large";
+// }

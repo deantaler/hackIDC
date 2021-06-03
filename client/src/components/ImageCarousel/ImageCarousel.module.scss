@@ -1,0 +1,117 @@
+@import "../../styles/variables";
+div.full-screen-modal .gallery {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.shrinked {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  .gallery {
+    width: 95vw;
+  }
+}
+.carousel-image {
+  display: inline-block;
+  position: relative;
+  z-index: 20;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  max-height: 800px;
+}
+.image-container {
+  // width: 50%;
+  width: 50vw;
+  transition: all 0.2s linear;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+// .close-modal-button {
+//   background-color: white;
+//   cursor: pointer;
+// }
+.close-modal-button {
+  top: 0;
+  right: 0;
+  position: fixed;
+  z-index: 20;
+  cursor: pointer;
+
+  &:hover {
+    span {
+      &:after,
+      &:before {
+        transform: rotate3d(0, 0, 1, 0);
+      }
+    }
+  }
+  span {
+    border: rgba($primaryFontColor, 0.5) 1px solid;
+    color: #fff;
+    background-color: #53d300;
+    position: absolute;
+    right: 2vmax;
+    top: 2vmax;
+    display: block;
+    width: 35px;
+    height: 35px;
+    margin: 0;
+
+    &:after,
+    &:before {
+      display: inline-block;
+      height: 2px;
+      background: #fff;
+      position: absolute;
+      content: "";
+      -webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+      top: 50%;
+      left: 50%;
+      margin: -1px 0 0 -11px;
+      width: 22px;
+      -webkit-transition: -webkit-transform 0.1s ease;
+      transition: transform 0.1s ease;
+    }
+
+    &:before {
+      transform: rotate3d(0, 0, 1, 45deg);
+    }
+
+    &:after {
+      transform: rotate3d(0, 0, 1, -45deg);
+    }
+  }
+}
+.full-screen-modal {
+  margin: auto;
+  overflow: auto;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+
+.black-background-modal {
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: -1;
+}
+
+.full-screen-carousel-image {
+  align-self: center;
+  margin: 0 auto;
+  width: 90vw;
+}
+.full-screen-image-container {
+  margin: 0 auto;
+  width: 85%;
+  max-width: 1920px;
+  max-height: 1080px;
+}

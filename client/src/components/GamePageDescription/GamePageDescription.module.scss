@@ -1,0 +1,116 @@
+@import "../../styles/variables";
+.container {
+  width: 100%;
+  position: relative;
+  color: rgba($primaryFontColor, 1);
+  background-color: rgba(0, 0, 0, 0);
+  display: grid;
+  grid-template:
+    "left-img description right-img" 1fr /
+    auto 1fr auto;
+  overflow: hidden;
+  margin-bottom: 2vh;
+  z-index: 0;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+
+  .top-seperator {
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .bottom-seperator {
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .left-image {
+    grid-area: left-img;
+  }
+  .right-image {
+    grid-area: right-img;
+  }
+  .left-image,
+  .right-image {
+    display: none;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .logo {
+    text-align: -webkit-center;
+  }
+  .section-content {
+    grid-area: description;
+    position: relative;
+    z-index: 5;
+    background-color: transparent;
+    width: 100%;
+    min-height: 50vh;
+    padding: 4%;
+    text-align: center;
+    .heading {
+      text-transform: uppercase;
+      font-family: $primaryFont;
+      font-size: 1.2rem;
+      font-weight: 700;
+      .heading-spacer {
+        display: none;
+      }
+    }
+    .content {
+      line-height: 1.5rem;
+      font-size: 1.25rem;
+      font-weight: 300;
+      font-family: $secondaryFont;
+    }
+  }
+}
+
+@media only screen and (min-width: 570px) {
+  .container {
+    .section-content {
+      padding: 4vmin;
+      width: 100%;
+      text-align: left;
+    }
+    .logo {
+      text-align: -webkit-left;
+    }
+    .left-image {
+      .image-container {
+        left: 5%;
+      }
+    }
+    .right-image {
+      .image-container {
+        right: 10%;
+      }
+    }
+    .left-image,
+    .right-image {
+      min-width: 20vw;
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+      .image-container {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .container {
+    grid-template:
+      "left-img description right-img" 1fr /
+      20% 60% 20%;
+  }
+}

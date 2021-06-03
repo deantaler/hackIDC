@@ -1,0 +1,62 @@
+@use "sass:string";
+
+//The convention for font list:
+// every list item is(_names _weight _style)
+@function build-font-src($font-family, $list) {
+  $src: "";
+  @if length($list) == 0 {
+    @return url("../fonts/#{$font-family}/#{$font-family}.ttf")
+      format("truetype");
+  } @else {
+    @for $i from 1 through length($list) {
+      $type: nth($list, $i);
+
+      $src: $src +
+        "url('../fonts/#{$font-family}/#{$font-family}-#{$type}.ttf') format('truetype')";
+      @if $i != length($list) {
+        $src: $src + ",";
+      }
+    }
+    @return string.unquote($src);
+  }
+}
+
+@mixin build-font($font-family, $font-specs-list) {
+  @each $names, $weight, $style in $font-specs-list {
+    @font-face {
+      font-family: $font-family;
+      @if $weight {
+        font-weight: $weight;
+      }
+      @if $style {
+        font-style: $style;
+      }
+      font-display: swap;
+      src: build-font-src($font-family, $names);
+    }
+  }
+}
+
+@font-face {
+  font-family: "Lato";
+  src: build-font-src("Lato", [Light]);
+  font-weight: 200;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lato";
+  src: build-font-src("Lato", [Regular]);
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lato";
+  src: build-font-src("Lato", [Bold]);
+  font-weight: 700;
+  font-display: swap;
+}
+
+@include build-font(
+  "Muli",
+  (([ExtraLight] 200), ([Light] 300), ([] 400), ([Bold] 700))
+);

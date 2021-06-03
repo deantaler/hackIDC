@@ -1,0 +1,16 @@
+@media only screen and (min-width: 580px) {
+  .game-card-list {
+    width: 100%;
+    display: flex;
+    font-size: small;
+    flex-wrap: wrap;
+
+    justify-content: flex-start;
+
+    // justify-content: space-between;
+    // &:after {
+    //   content: "";
+    //   flex: auto;
+    // }
+  }
+}

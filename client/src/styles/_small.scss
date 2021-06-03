@@ -1,0 +1,46 @@
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $primaryFont, Helvetica, Arial, Verdana, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+@for $i from 1 to 12 {
+  .sm-#{$i} {
+    flex-basis: #{$i / 12 * 100%};
+  }
+}
+
+.container {
+  max-width: 1024px;
+  margin: auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column {
+  padding: 0 2vw;
+  margin: 0 0 0.75rem 0;
+}
+
+button#hamburgerBtn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2.4rem;
+  cursor: pointer;
+  padding: 0 30px 0 2vw;
+}

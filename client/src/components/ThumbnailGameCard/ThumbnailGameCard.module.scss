@@ -1,0 +1,184 @@
+@import "../../styles/variables";
+/* 
+Dynamic font size based on: https://css-tricks.com/viewport-sized-typography/
+please note the Bug mentioned there, there's a need to enable repaint for some browsers!
+*/
+
+/*
+SUPPPPPPPEEEEEEERRRRRRRRRRRRRR IMPORTANT!!!!!!!!!!!!!!!!!
+the .game-icon gets width,height of 0, that's why I need to give it min-width
+it's better if I'll find a way to make it's container with full width and height,
+so I won't have to give it min width,height
+*/
+.card {
+  display: grid;
+  grid-template:
+    "logo" minmax(50%, 65%)
+    "description" 1fr /
+    1fr;
+  margin: 2vh 0;
+  width: 100%;
+  font-size: small;
+  padding: 2vh;
+  line-height: 1;
+  * {
+    align-self: center;
+  }
+}
+.logo {
+  grid-area: logo;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+}
+.game-icon {
+  min-width: 20vh;
+}
+.description-container {
+  padding: 1vh 0;
+}
+.description {
+  grid-area: description;
+  padding: 0;
+  text-align: center;
+  background-color: transparent !important;
+  * {
+    margin: 0.2% 0;
+  }
+}
+.divider {
+  display: none;
+}
+.content {
+  h1 {
+    text-transform: uppercase;
+    font: {
+      size: 200%;
+      weight: 700;
+    }
+  }
+  p {
+    text-decoration: none;
+    font: {
+      weight: 300;
+      family: $secondaryFont;
+      size: 150%;
+    }
+  }
+}
+.play-game-button,
+.description-text {
+  margin: 1% 0;
+}
+.play-game-button {
+  color: rgba($secondaryColor, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: underline;
+  font-weight: 700;
+  margin: 0 !important;
+  a {
+    width: 50%;
+    max-width: 100%;
+    text-align: center;
+    text-transform: capitalize;
+    padding: 5px;
+    color: rgba($primaryFontColor, 1);
+    font-weight: 400;
+    border-radius: 15px;
+    font-size: 1.15rem;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .card {
+    display: flex;
+    padding: 0;
+    align-items: center;
+    * {
+      display: block;
+      text-align: left;
+    }
+  }
+  .description-container {
+    padding: 0 1vmin;
+  }
+  .play-game-button {
+    justify-content: flex-start;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .card {
+    display: grid;
+    grid-template:
+      "logo description" 1fr /
+      min-content 1fr;
+    width: calc(95% / 3);
+  }
+  .logo {
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .game-icon {
+    min-width: 10vw;
+  }
+  .description-container {
+    padding: 0 1vw;
+    display: flex;
+    justify-content: flex-start;
+    height: 100%;
+  }
+  .description {
+    height: 100%;
+    width: 100%;
+  }
+  .content {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    h1 {
+      font-size: 110%;
+      width: 100%;
+    }
+  }
+  .content .play-game-button {
+    margin: 0;
+  }
+  .play-game-button {
+    align-self: flex-start;
+    width: 50%;
+    margin: 3px 0 !important;
+    font: {
+      weight: 400;
+      size: 1rem;
+    }
+    a {
+      padding: 5px;
+      width: 100%;
+      padding: 3%;
+      background-color: rgba($primaryColor, 1) !important;
+      border: 2px rgba($secondaryColor, 0.8) solid;
+      &:hover {
+        background-color: rgba($secondaryColor, 0.2) !important;
+        color: rgba($primaryColor, 1);
+        border: 2px rgba($secondaryColor, 1) solid;
+      }
+    }
+  }
+  .description-text {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .content {
+    h1 {
+      font-size: 150%;
+    }
+  }
+}

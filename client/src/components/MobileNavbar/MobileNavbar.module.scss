@@ -1,0 +1,120 @@
+@import "../../styles/variables";
+.sidebar {
+  display: flex;
+  background-color: #000;
+  flex-wrap: nowrap;
+  width: 40%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  min-width: 300px;
+  z-index: 100;
+  transition: left 0.5s;
+
+  nav {
+    padding: 30px;
+    width: 100%;
+    ul {
+      li {
+        padding: 2vh 4vh 2vh 0;
+        border-bottom: 1px hsla(0, 0%, 100%, 0.08) solid;
+        line-height: 20px;
+        a {
+          font-family: $primaryFont;
+          font-weight: 400;
+          transition: color 0.7s;
+          &:hover {
+            color: rgba($secondaryColor, 1);
+          }
+        }
+      }
+    }
+  }
+}
+.social-links-group {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  bottom: 10vh;
+}
+.social-link {
+  margin: 0 1vw;
+  padding: 2px;
+  min-width: 35px;
+  svg {
+    fill: rgba($primaryFontColor, 1);
+  }
+  svg:hover {
+    fill: rgba($secondaryColor, 1);
+  }
+}
+.close-mobile-menu-icon {
+  cursor: pointer;
+  &:hover {
+    span {
+      &:after,
+      &:before {
+        transform: rotate3d(0, 0, 1, 0);
+      }
+    }
+  }
+  span {
+    color: #fff;
+    background-color: #53d300;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin: 0;
+
+    &:after,
+    &:before {
+      display: inline-block;
+      height: 2px;
+      background: #fff;
+      position: absolute;
+      content: "";
+      -webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+      top: 50%;
+      left: 50%;
+      margin: -1px 0 0 -11px;
+      width: 22px;
+      -webkit-transition: -webkit-transform 0.1s ease;
+      transition: transform 0.1s ease;
+    }
+
+    &:before {
+      transform: rotate3d(0, 0, 1, 45deg);
+    }
+
+    &:after {
+      transform: rotate3d(0, 0, 1, -45deg);
+    }
+  }
+}
+.collapse {
+  left: -300px;
+  width: 0;
+}
+.active {
+  color: rgba($secondaryColor, 1);
+}
+
+@media only screen and (max-width: 300px) {
+  .sidebar {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media only screen and (min-width: 860px) {
+  .mobile-nav-bar {
+    display: none;
+  }
+}

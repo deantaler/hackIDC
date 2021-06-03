@@ -1,0 +1,40 @@
+@mixin display-grid {
+  display: -ms-grid;
+  display: grid;
+}
+
+@mixin user-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@mixin animation($name, $duration: 3s, $timing-function: ease, $delay: 0s) {
+  -o-animation: $name $duration $timing-function $delay;
+  -moz-animation: $name $duration $timing-function $delay;
+  -webkit-animation: $name $duration $timing-function $delay;
+  animation: $name $duration $timing-function $delay;
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin justify-content($position) {
+  -ms-flex-pack: $position;
+  justify-content: $position;
+}
+
+@mixin transform($value) {
+  -ms-transform: $value;
+  -moz-transform: $value;
+  -webkit-transform: $value;
+  -o-transform: $value;
+  transform: $value;
+}
