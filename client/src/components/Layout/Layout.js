@@ -1,18 +1,18 @@
 import React from "react";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
-import layoutSyles from "./Layout.module.scss";
+import layoutStyles from "./Layout.module.scss";
 
 const Layout = (props) => {
-  const backgroundColor = props.backgroundColor || "#ffffff";
+  const backgroundColor = props.backgroundColor || "#333333";
 
   return (
-    <div className={layoutSyles.container}>
-      <Header className={layoutSyles.header} />
-      <div className={layoutSyles.body} style={{ backgroundColor }}>
+    <div className={layoutStyles.container}>
+      <Header className={layoutStyles.header} />
+      <div className={layoutStyles.body} style={{ backgroundColor }}>
         {props.children}
       </div>
-      <Footer className={layoutSyles.footer} />
+      <Footer className={layoutStyles.footer} />
     </div>
   );
 };

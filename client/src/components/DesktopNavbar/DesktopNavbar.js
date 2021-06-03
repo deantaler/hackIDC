@@ -1,9 +1,10 @@
 import React from "react";
 
 import DesktopNavbarStyles from "./DesktopNavbar.module.scss";
+
 const DesktopNavbar = (props) => {
   const { navItems } = props;
-  const menuItemLink = (name, path, type) => {
+  const menuItemLink = (name, path) => {
     return (
       <a href={path} className={DesktopNavbarStyles.link}>
         {name}

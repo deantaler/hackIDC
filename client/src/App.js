@@ -1,7 +1,8 @@
 import React from "react";
 import Layout from "./components/Layout/Layout";
 import Head from "./components/Head/Head";
-import "./App.css";
+import "./styles/main.scss";
+import "./styles/sass/mixins.scss";
 
 function App() {
   return (
