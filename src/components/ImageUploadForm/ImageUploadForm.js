@@ -3,7 +3,7 @@ import Spinner from "./Spinner/Spinner";
 import ImageGallery from "./ImageGallery/ImageGallery";
 import UploadButton from "./UploadButton/UploadButton";
 // import { API_URL } from "./config";
-let API_URL = "/";
+let API_URL = "http://localhost:5000";
 
 const ImageUploadForm = () => {
   const [isUploading, setIsUploading] = useState(false);
