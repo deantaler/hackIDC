@@ -15,3 +15,4 @@ def get_n_closest(rgb: (int, int, int), n: int) -> pd.DataFrame:
 
 
 # print(get_n_closest(rgb=(245, 236, 217), n=3))
+# ee
