@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImages, faImage } from "@fortawesome/free-solid-svg-icons";
 
-export default (props) => (
+const UploadButton = (props) => (
   <div className="buttons fadein">
     <div className="button">
       <label htmlFor="single">
@@ -19,3 +19,5 @@ export default (props) => (
     </div>
   </div>
 );
+
+export default UploadButton;

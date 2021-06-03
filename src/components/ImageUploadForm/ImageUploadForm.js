@@ -9,7 +9,7 @@ const ImageUploadForm = () => {
   const [isUploading, setIsUploading] = useState(false);
   const [images, setImages] = useState([]);
 
-  const onChange = (e) => {
+  const onChangeHandler = (e) => {
     const files = Array.from(e.target.files);
     setIsUploading(true);
 
@@ -30,16 +30,16 @@ const ImageUploadForm = () => {
       });
   };
 
-  const removeImage = (id) => {
+  const removeImageHandler = (id) => {
     setImages(images.filter((image) => image.public_id !== id));
   };
 
   const content = isUploading ? (
     <Spinner />
   ) : images.length > 0 ? (
-    <ImageGallery images={images} removeImage={this.removeImage} />
+    <ImageGallery images={images} removeImage={removeImageHandler} />
   ) : (
-    <UploadButton onChange={this.onChange} />
+    <UploadButton onChange={onChangeHandler} />
   );
 
   return (
