@@ -1,17 +1,14 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImages, faImage } from "@fortawesome/free-solid-svg-icons";
 
-const UploadButton = (props) => (
-  <div className="buttons fadein">
-    <div className="button">
-      <label htmlFor="single">
-        <FontAwesomeIcon icon={faImage} color="#3B5998" size="10x" />
-      </label>
-      <input type="file" name="image" id="single" onChange={props.onChange} />
+const UploadButton = (props) => <div className="file-field input-field">
+    <div className="btn">
+      <span>Board Photo</span>
+      <input type="file" name="board" id="single" onChange={props.onChange} />
     </div>
-
+    <div className="file-path-wrapper">
+      <input className="file-path validate" type="text" />
+    </div>
   </div>
-);
+  
 
 export default UploadButton;

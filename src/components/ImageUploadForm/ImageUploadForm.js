@@ -18,8 +18,7 @@ const ImageUploadForm = () => {
     files.forEach((file, i) => {
       formData.append(i, file);
     });
-    console.log(formData);
-    console.log(files);
+    
     fetch(`${API_URL}/upload-image`, {
       method: "POST",
       body: formData,

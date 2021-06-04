@@ -1,39 +1,26 @@
 import React from "react"
 import HeroBannerStyles from "./HeroBanner.module.scss"
-import RichTextRenderer from "../RichTextRenderer/RichTextRenderer"
+import colorCalibration from "../../images/color-calibration.jpg"
+const HeroBanner = () => {
 
-const HeroBanner = props => {
-  const { heroBanner1920w, slogan, svgSeperator } = props
-
-  // background-image:
-  //   -webkit-image-set(
-  //     url(examples/images/image-384.jpg) 1x,
-  //     url(examples/images/image-768.jpg) 2x,
-  //   );
-  // background-image:
-  //   image-set(
-  //     url(examples/images/image-384.jpg) 1x,
-  //     url(examples/images/image-768.jpg) 2x,
-  //   );
+  
   return (
     <div className={HeroBannerStyles.container}>
       <div className={HeroBannerStyles.textContainer}>
-        {slogan && (
           <div className={HeroBannerStyles.text}>
-            <RichTextRenderer content={slogan} />
+            {`ColorTube - I see your true color, and that's why you love me`}
           </div>
-        )}
       </div>
 
       <div className={HeroBannerStyles.imagesContainer}>
         <div
-          className={`${HeroBannerStyles.imagePlaceHolder} ${HeroBannerStyles.hero1920w}`}
+          className={`${HeroBannerStyles.imagePlaceHolder}`}
           style={{
-            backgroundImage: `url(${heroBanner1920w.fluid.src})`,
+            backgroundImage: `url(${colorCalibration})`,
           }}
+          
         ></div>
       </div>
-      <div className={HeroBannerStyles.seperator}>{svgSeperator}</div>
     </div>
   )
 }
