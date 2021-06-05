@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Spinner from "./Spinner/Spinner";
 import ImageGallery from "./ImageGallery/ImageGallery";
 import UploadButton from "./UploadButton/UploadButton";
@@ -7,44 +7,45 @@ let API_URL = "http://localhost:5000";
 
 const ImageUploadForm = () => {
   const [isUploading, setIsUploading] = useState(false);
-  const [images, setImages] = useState([]);
+  const [files, setFiles] = useState([]);
+  const [colors, setColors] = useState([]);
+  const boardFile = useRef(null);
+  const colorFile = useRef(null);
+  
 
-  const onChangeHandler = (e) => {
-    const files = Array.from(e.target.files);
-    setIsUploading(true);
-
+  const onSubmitHandler = e => {
+    // document.querySelectorAll("#to_hide").style(display=hide);
+    // document.querySelectorAll("#to_show").style(display=show);
+ 
+    console.log(files);
     const formData = new FormData();
+    console.log(boardFile, colorFile)
+    formData.append('board', boardFile.current.files[0]);
+    formData.append('color', colorFile.current.files[0]);
 
-    files.forEach((file, i) => {
-      formData.append(i, file);
-    });
-
-    fetch(`${API_URL}/image-upload`, {
-      method: "POST",
+    console.log(formData);
+    fetch(`${API_URL}/upload-image`, {
+      method: 'POST',
       body: formData,
+      
     })
       .then((res) => res.json())
-      .then((images) => {
-        setIsUploading(false);
-        setImages(images);
+      .then((colors) => {
+        setColors(colors);
+        console.log(colors);
       });
-  };
+  }
 
-  const removeImageHandler = (id) => {
-    setImages(images.filter((image) => image.public_id !== id));
-  };
 
-  const content = isUploading ? (
-    <Spinner />
-  ) : images.length > 0 ? (
-    <ImageGallery images={images} removeImage={removeImageHandler} />
-  ) : (
-    <UploadButton onChange={onChangeHandler} />
-  );
+ 
 
   return (
     <div>
-      <div className="buttons">{content}</div>
+      <div style={{width: '80%', margin: '0 auto'}}>
+      <UploadButton onSubmitHandler={onSubmitHandler} boardRef={boardFile} colorRef={colorFile}/>
+        {colors.length > 0 && (
+    <ImageGallery colors={colors} />
+  )}</div>
     </div>
   );
 };

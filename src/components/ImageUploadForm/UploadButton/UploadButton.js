@@ -1,23 +1,38 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImages, faImage } from "@fortawesome/free-solid-svg-icons";
 
-const UploadButton = (props) => (
-  <div className="buttons fadein">
-    <div className="button">
-      <label htmlFor="single">
-        <FontAwesomeIcon icon={faImage} color="#3B5998" size="10x" />
-      </label>
-      <input type="file" id="single" onChange={props.onChange} />
+const UploadButton = ({boardRef, colorRef, onSubmitHandler}) => {
+
+const buttonStyles = {minWidth: "200px"}
+return <div id="form">
+
+<div className="file-field input-field">
+  <div id="to_hide">
+    <div className="btn" style={buttonStyles}>
+      <span>Board Photo</span>
+      <input type="file" name="board" id="single" ref={boardRef} />
     </div>
-
-    <div className="button">
-      <label htmlFor="multi">
-        <FontAwesomeIcon icon={faImages} color="#6d84b4" size="10x" />
-      </label>
-      <input type="file" id="multi" onChange={props.onChange} multiple />
+    <div className="file-path-wrapper">
+      <input className="file-path validate" type="text" placeholder="Upload one or more files"/>
     </div>
   </div>
-);
+  <div className="file-field input-field">
+    <div className="btn" style={buttonStyles}>
+      <span>Requested Color</span>
+      <input type="file" name="color" id="single" ref={colorRef}/>
+    </div>
+    <div className="file-path-wrapper">
+      <input className="file-path validate" type="text" />
+    </div>
+  </div>
+  <a className="waves-effect waves-light btn" style={{...buttonStyles, display:"block", margin:"0 auto", width:"50%"}} onClick={onSubmitHandler}>Submit</a>
+  </div>
+  <div id = "to_show" style={{"display":"hidden"}}>
+    <div id ="color">
+    </div>
+  </div>
+</div>
+
+
+}
 
 export default UploadButton;
