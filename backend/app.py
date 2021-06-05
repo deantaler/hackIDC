@@ -27,10 +27,11 @@ def upload():
 
     r, g, b = get_RGB('.\\board.png', '.\\color.png')
     # rgb = (200, 200, 200)
-    close_rgb = get_n_closest(rgb=(r,g,b), n=3)
+    close_rgb = get_n_closest(rgb=(r, g, b), n=3)
     print(close_rgb)
     return jsonify(close_rgb)
     # return res
+
 
 if __name__ == '__main__':
     app.run()
